@@ -1,1 +1,2 @@
 # PODS-plotly-example
+This repo contains a basic demonstration of ggplot2 and plotly given to interns as part of the [McGill's Policy and Data Science summer program](https://www.policyanddatascience.org/) in August 2018. A big thank you to the Meghan Keenan and all the interns for their love for data science!
