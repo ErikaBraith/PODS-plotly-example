@@ -34,6 +34,7 @@ data(txhousing)
 ##### Select variables, subset by city, omit missing variables, convert to data frame
 <div style="margin-bottom:20px;">
 </div>
+
 ```{r, subset-data}
 tx = txhousing %>%
         select(city, month, median, year) %>%
@@ -48,6 +49,7 @@ tx = txhousing %>%
 ##### Explore data
 <div style="margin-bottom:20px;">
 </div>
+
 ```{r, view-data}
 nrow(tx)
 head(tx)
@@ -56,6 +58,7 @@ head(tx)
 #### Static ggplot of housing prices by month, stratified by city 
 <div style="margin-bottom:20px;">
 </div>
+
 ```{r, make-plots}
 texas_plot = ggplot(tx, aes(x = year, y = avg, color = city), factor = city) + 
         geom_path() +
@@ -73,6 +76,7 @@ print(texas_plot)
 #### Let's make it interactive with ggplotly
 <div style="margin-bottom:20px;">
 </div>
+
 ```{r, ggplotly-example}
 ggplotly(texas_plot)
 ```
@@ -80,6 +84,7 @@ ggplotly(texas_plot)
 #### Making it interactive with plot_ly
 <div style="margin-bottom:20px;">
 </div>
+
 ```{r,plotly-example}
 plot_ly(data = tx, x = ~year, y = ~avg) %>% 
         add_lines(color = ~city) %>% 
