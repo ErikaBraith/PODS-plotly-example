@@ -1,0 +1,89 @@
+---
+title: "PODS-plotly-example"
+author: "Erika Braithwaite"
+date: '2018-08-01'
+output: html_document
+---
+
+```{r setup, include=FALSE, echo = F}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+This RMarkdown file contains an examples of interactive plots in R. 
+
+#### Let's start by loading the requires packages
+<div style="margin-bottom:20px;">
+</div>
+
+```{r load-packages,  results='hide', message=FALSE, warning=FALSE}
+devtools::install_github('hadley/ggplot2')
+pacman::p_load(plotly, dplyr)
+```
+
+
+#### Now, let's use some pre-loaded data
+<div style="margin-bottom:20px;">
+</div>
+
+```{r, load-data}
+data(txhousing)
+```
+
+
+##### Select variables, subset by city, omit missing variables, convert to data frame
+<div style="margin-bottom:20px;">
+</div>
+```{r, subset-data}
+tx = txhousing %>%
+        select(city, month, median, year) %>%
+        filter(city %in% c('Galveston', 'Bay Area', 'Port Arthur', 'Austin')) %>% 
+        group_by(city, year) %>% 
+        summarise(avg = mean(median)) %>% 
+        na.omit() %>% 
+        data.frame() 
+```
+
+
+##### Explore data
+<div style="margin-bottom:20px;">
+</div>
+```{r, view-data}
+nrow(tx)
+head(tx)
+```
+
+#### Static ggplot of housing prices by month, stratified by city 
+<div style="margin-bottom:20px;">
+</div>
+```{r, make-plots}
+texas_plot = ggplot(tx, aes(x = year, y = avg, color = city), factor = city) + 
+        geom_path() +
+        labs(y = 'Average price ($USD)', 
+             title = 'Texas housing prices 2000-2015, by month') + 
+        theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
+        scale_x_continuous(breaks = pretty(tx$year, n = 15))
+```
+
+
+```{r, print-plot}
+print(texas_plot)
+```
+
+#### Let's make it interactive with ggplotly
+<div style="margin-bottom:20px;">
+</div>
+```{r, ggplotly-example}
+ggplotly(texas_plot)
+```
+
+#### Making it interactive with plot_ly
+<div style="margin-bottom:20px;">
+</div>
+```{r,plotly-example}
+plot_ly(data = tx, x = ~year, y = ~avg) %>% 
+        add_lines(color = ~city) %>% 
+        rangeslider() %>% 
+        layout(xaxis = list(title = ""))
+```
+
