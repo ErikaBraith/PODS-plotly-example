@@ -2,7 +2,10 @@
 title: "PODS-plotly-example"
 author: "Erika Braithwaite"
 date: '2018-08-01'
-output: html_document
+output: 
+        html_document:
+                keep_md: true
+
 ---
 
 ```{r setup, include=FALSE, echo = F}
