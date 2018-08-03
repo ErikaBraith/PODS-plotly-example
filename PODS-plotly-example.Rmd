@@ -98,5 +98,5 @@ texas_plotly = plot_ly(data = tx, x = ~year, y = ~avg) %>%
 ```
 
 Here is a static image of the plot, or [click here](https://plot.ly/~erikabraithwaite/32) to access my plotly account for the interactive version.
-![texas-prices-ggplotly.png]('PODS-plotly-example_files/figures-html')
+![](PODS-plotly-example_files/figure-html/texas-prices-ggplotly.png)
 
