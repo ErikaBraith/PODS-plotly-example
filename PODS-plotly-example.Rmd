@@ -81,7 +81,8 @@ print(texas_plot)
 </div>
 
 ```{r, ggplotly-example, plotly=TRUE}
-ggplotly(texas_plot, session="knitr")
+gg = ggplotly(texas_plot, session="knitr")
+gg
 ```
 
 #### Making it interactive with plot_ly
@@ -89,9 +90,13 @@ ggplotly(texas_plot, session="knitr")
 </div>
 
 ```{r,plotly-example}
-plot_ly(data = tx, x = ~year, y = ~avg) %>% 
+texas_plotly = plot_ly(data = tx, x = ~year, y = ~avg) %>% 
         add_lines(color = ~city) %>% 
         rangeslider() %>% 
         layout(xaxis = list(title = ""))
+#(texas_plotly, "texas_plotly.png")
 ```
+
+Here is a static image of the plot, or [click here](https://plot.ly/~erikabraithwaite/32) to access my plotly account for the interactive version.
+![texas-prices-ggplotly.png]('PODS-plotly-example_files/figures-html')
 

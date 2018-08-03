@@ -30,11 +30,9 @@ texas_plot = ggplot(tx, aes(x = year, y = avg, color = city), factor = city) +
 texas_plot
 ggsave(filename = "plots/ggplot_texas_plot.jpeg", texas_plot, "jpeg", width = 4, height = 6)
 gg = ggplotly(texas_plot)
+gg
 
 
-https://blogs.uoregon.edu/rclub/2015/02/17/interactive-embedded-plots-with-plotly-and-ggplot2/
-# Figure this out for the markdown        
-# Using plotly
 
 pplot = plot_ly(data = tx, x = ~year, y = ~avg) %>% 
         add_lines(color = ~city) %>% 
