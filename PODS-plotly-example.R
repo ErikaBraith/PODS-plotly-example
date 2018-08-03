@@ -2,7 +2,7 @@ devtools::install_github('hadley/ggplot2')
 pacman::p_load(plotly, dplyr)
 
 
-# Load data#
+# Load data
 data(txhousing)
 
 # Select variables, subset by city, omit missing variables, convert to data frame
@@ -28,16 +28,13 @@ texas_plot = ggplot(tx, aes(x = year, y = avg, color = city), factor = city) +
         scale_x_continuous(breaks = pretty(tx$year, n = 15))
 
 texas_plot
-ggsave(filename = "plots/ggplot_texas_plot.jpeg", texas_plot, "jpeg", width = 4, height = 6)
-gg = ggplotly(texas_plot)
-gg
 
 
-
-pplot = plot_ly(data = tx, x = ~year, y = ~avg) %>% 
+texas_plotly = plot_ly(data = tx, x = ~year, y = ~avg) %>% 
         add_lines(color = ~city) %>% 
         rangeslider() %>% 
         layout(xaxis = list(title = ""))
-pplot
+
+texas_plotly
 
 

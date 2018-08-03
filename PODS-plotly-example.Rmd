@@ -76,14 +76,6 @@ texas_plot = ggplot(tx, aes(x = year, y = avg, color = city), factor = city) +
 print(texas_plot)
 ```
 
-#### Let's make it interactive with ggplotly
-<div style="margin-bottom:20px;">
-</div>
-
-```{r, ggplotly-example, plotly=TRUE}
-gg = ggplotly(texas_plot, session="knitr")
-gg
-```
 
 #### Making it interactive with plot_ly
 <div style="margin-bottom:20px;">
@@ -97,6 +89,6 @@ texas_plotly = plot_ly(data = tx, x = ~year, y = ~avg) %>%
 #(texas_plotly, "texas_plotly.png")
 ```
 
-Here is a static image of the plot, or [click here](https://plot.ly/~erikabraithwaite/32) to access my plotly account for the interactive version.
+Here is a static image of the plot, or [click here](https://plot.ly/~erikabraithwaite/32) to access my plotly account for the interactive version. We can explore the interactive version by scrolling, zooming and clicking different areas of the plot. Try it out!
 ![](PODS-plotly-example_files/figure-html/texas-prices-ggplotly.png)
 
