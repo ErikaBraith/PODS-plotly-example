@@ -77,8 +77,8 @@ print(texas_plot)
 <div style="margin-bottom:20px;">
 </div>
 
-```{r, ggplotly-example}
-ggplotly(texas_plot)
+```{r, ggplotly-example, plotly=TRUE}
+ggplotly(texas_plot, session="knitr")
 ```
 
 #### Making it interactive with plot_ly
