@@ -110,9 +110,10 @@ texas_plotly = plot_ly(data = tx, x = ~year, y = ~avg) %>%
         add_lines(color = ~city) %>% 
         rangeslider() %>% 
         layout(xaxis = list(title = ""))
-#(texas_plotly, "texas_plotly.png")
 ```
+I published my interactive plot using the ```api create``` function after having saved my authentication credentials. For instructions on how to do this [see here](https://plot.ly/r/getting-started/).
 
-Here is a static image of the plot, or [click here](https://plot.ly/~erikabraithwaite/32) to access my plotly account for the interactive version.
-![](PODS-plotly-example_files/figure-html/texas-prices-ggplotly.png)
+
+Here is a static image of the plot, or [click here](https://plot.ly/~erikabraithwaite/32) to access my plotly account for the interactive version. We can explore the interactive version by scrolling, zooming and clicking different areas of the plot. Try it out!
+![](PODS-plotly-example_files/figure-html/texas-prices-plotly.png)
 
